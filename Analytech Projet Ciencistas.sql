@@ -9,11 +9,11 @@ USE `Analytech Projet Ciencistas`;
 
 -- Cria a tabela cientistas
 CREATE TABLE cientistas (
-  SSN INT,
+  SSN BIGINT,
   nome VARCHAR(30) NOT NULL,
-  sexo VARCHAR() NOT NULL,
+  sexo VARCHAR(10) NOT NULL,
   instituicao VARCHAR(50) NOT NULL,
-  PRIMARY KEY (SSN) AUTOINCREMENT
+  PRIMARY KEY (SSN) 
 );
 
 -- Cria a tabela projetos
@@ -21,12 +21,12 @@ CREATE TABLE projetos (
   Code VARCHAR(4),
   nome VARCHAR(50) NOT NULL,
   horas INT,
-  PRIMARY KEY (Code) AUTOINCREMENT
+  PRIMARY KEY (Code) 
 );
 
 -- Cria a tabela atribuicao
 CREATE TABLE atribuicao (
-  cientista INT NOT NULL,
+  cientista BIGINT NOT NULL,
   projeto VARCHAR(4) NOT NULL,
   PRIMARY KEY (cientista, projeto),
   FOREIGN KEY (cientista) REFERENCES cientistas (SSN),
@@ -40,12 +40,12 @@ CREATE TABLE locais (
   localID INT,
   localNome VARCHAR(50) NOT NULL,
   cidade VARCHAR(50) NOT NULL,
-  PRIMARY KEY (localID) AUTOINCREMENT
+  PRIMARY KEY (localID) 
 );
 
 -- Cria a tabela localCientistas
 CREATE TABLE localCientistas (
-  cientista INT NOT NULL,
+  cientista BIGINT NOT NULL,
   local INT NOT NULL,
   PRIMARY KEY (cientista, local),
   FOREIGN KEY (cientista) REFERENCES cientistas (SSN),
@@ -66,15 +66,15 @@ CREATE TABLE localProjetos (
 
 -- Cria a tabela financiadores
 CREATE TABLE financiadores (
-  financiadorID INT,
+  financiadorID BIGINT,
   nomeFinanciador VARCHAR(50) NOT NULL,
-  PRIMARY KEY (financiadorID) AUTOINCREMENT
+  PRIMARY KEY (financiadorID) 
 );
 
 -- Cria a tabela financiamento
 CREATE TABLE financiamento (
   projeto VARCHAR(4) NOT NULL,
-  financiador INT NOT NULL,
+  financiador BIGINT NOT NULL,
   verba FLOAT,
   PRIMARY KEY (projeto, financiador),
   FOREIGN KEY (projeto) REFERENCES projetos (Code),
@@ -92,7 +92,7 @@ CREATE TABLE habilidades (
 
 -- Cria a tabela habilidadesCientistas
 CREATE TABLE habilidadesCientistas (
-  cientista INT NOT NULL,
+  cientista BIGINT NOT NULL,
   habilidade INT NOT NULL,
   PRIMARY KEY (cientista, habilidade),
   FOREIGN KEY (cientista) REFERENCES cientistas (SSN),
