@@ -21,6 +21,8 @@ CREATE TABLE projetos (
   Code VARCHAR(4),
   nome VARCHAR(50) NOT NULL,
   horas INT,
+  dataInicio DATETIME NOT NULL,
+  dataCerre DATETIME NULL,
   PRIMARY KEY (Code) 
 );
 
@@ -66,7 +68,7 @@ CREATE TABLE localProjetos (
 
 -- Cria a tabela financiadores
 CREATE TABLE financiadores (
-  financiadorID BIGINT,
+  financiadorID BIGINT NOT NULL,
   nomeFinanciador VARCHAR(50) NOT NULL,
   PRIMARY KEY (financiadorID) 
 );
@@ -98,3 +100,5 @@ CREATE TABLE habilidadesCientistas (
   FOREIGN KEY (cientista) REFERENCES cientistas (SSN),
   FOREIGN KEY (habilidade) REFERENCES habilidades (habilidadeID)
 );
+
+
